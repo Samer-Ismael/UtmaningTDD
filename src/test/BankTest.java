@@ -15,8 +15,6 @@ class BankTest {
     @Test
     void constructorShouldThrowExceptionForNegativeInitialCash (){
 
-        //assertThrows can test Exception, and it will pass if it happens.
-        //I had try catch in the method, so it will be not Exceptions, that's y I have it in comment.
         //It takes the Exception class and a lambda that will run the method you want to test.
         assertThrows(Exception.class,
                 () -> {
