@@ -1,6 +1,4 @@
 import org.junit.jupiter.api.Test;
-
-import static java.lang.Double.parseDouble;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BankTest {
@@ -33,7 +31,7 @@ class BankTest {
         assertEquals(expected, sut.getBalance());
     }
     @Test
-    void depositNullInputShouldNotCrash() throws Exception {
+    void depositNullInputShouldNotCrash() {
         // Arrange
         Double cash = null;
         // Act
@@ -59,13 +57,21 @@ class BankTest {
         assertEquals(100, sut.getBalance());
     }
     @Test
+    void withdrawNullShouldNotCrash (){
+        Double cash = null;
+        double result = 0;
+        try {
+            sut.withdraw(cash);
+        } catch (Exception e) {
+            result = -1;
+        }
+        assertEquals(100, sut.getBalance());
+        assertEquals(-1, result);
+    }
+    @Test
     void withdrawShouldSubtractPositiveAmountFromBalance() {
-        // Arrange
-        double expected = 50;
-        // Akt
         sut.withdraw(50);
-        // Assert
-        assertEquals(expected, sut.getBalance());
+        assertEquals(50, sut.getBalance());
     }
     @Test
     void withdrawShouldNotSubtractNegativeAmountFromBalance(){
