@@ -34,12 +34,7 @@ class BankTest {
 
     @Test
     void depositAddMinus(){
-        // Arrange
-        double expected = 0;
-        // Akt
-        double actual = sut.deposit(-50);
-        // Assert
-        assertEquals(expected,actual);
+        assertEquals(0,sut.deposit(-50));
     }
     @Test
     void depositAddZero() {

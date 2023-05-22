@@ -24,7 +24,7 @@ public class Bank {
 
     public double deposit (double cash) {
         try {
-            // In case the input was a String or other than double.
+            // In case the input was not double.
             if (cash >= 0) {
                 return balance += cash;
                 // if its right so we add  it to balance.
