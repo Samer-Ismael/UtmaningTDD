@@ -1,3 +1,5 @@
+package Bank;
+
 public class Bank {
 
     private int accountNumber;
@@ -33,6 +35,7 @@ public class Bank {
                 throw new Exception();
             }
         } catch (Exception e) {
+            //doNothing
         }
     }
     public void withdraw (double cash) {
@@ -46,6 +49,7 @@ public class Bank {
                 throw new Exception();
             }
         } catch (Exception e) {
+            // doNothing
         }
     }
 }

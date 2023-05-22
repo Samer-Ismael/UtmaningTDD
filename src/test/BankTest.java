@@ -1,3 +1,6 @@
+package test;
+import Bank.Bank;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +31,7 @@ class BankTest {
         // Akt
         sut.deposit(50.0);
         // Assert
-        assertEquals(expected, sut.getBalance());
+        Assertions.assertEquals(expected, sut.getBalance());
     }
     @Test
     void depositNullInputShouldNotCrash() {
@@ -43,18 +46,18 @@ class BankTest {
             result = -1;
         }
         // Assert
-        assertEquals(100, sut.getBalance());
+        Assertions.assertEquals(100, sut.getBalance());
         assertEquals(-1, result);
     }
     @Test
     void depositShouldNotAddNegativeAmountToBalance(){
         sut.deposit(-50);
-        assertEquals(100, sut.getBalance());
+        Assertions.assertEquals(100, sut.getBalance());
     }
     @Test
     void depositShouldNotAddZeroAmountToBalance() {
         sut.deposit(0);
-        assertEquals(100, sut.getBalance());
+        Assertions.assertEquals(100, sut.getBalance());
     }
     @Test
     void withdrawNullShouldNotCrash (){
@@ -65,22 +68,22 @@ class BankTest {
         } catch (Exception e) {
             result = -1;
         }
-        assertEquals(100, sut.getBalance());
+        Assertions.assertEquals(100, sut.getBalance());
         assertEquals(-1, result);
     }
     @Test
     void withdrawShouldSubtractPositiveAmountFromBalance() {
         sut.withdraw(50);
-        assertEquals(50, sut.getBalance());
+        Assertions.assertEquals(50, sut.getBalance());
     }
     @Test
     void withdrawShouldNotSubtractNegativeAmountFromBalance(){
         sut.withdraw(-50);
-        assertEquals(100,sut.getBalance());
+        Assertions.assertEquals(100,sut.getBalance());
     }
     @Test
     void withdrawShouldNotSubtractZeroAmountFromBalance() {
         sut.withdraw(0);
-        assertEquals(100,sut.getBalance());
+        Assertions.assertEquals(100,sut.getBalance());
     }
 }
