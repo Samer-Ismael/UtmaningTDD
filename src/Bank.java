@@ -22,32 +22,30 @@ public class Bank {
         return balance;
     }
 
-    public double deposit (double cash) {
+    public void deposit (double cash) {
         try {
             // In case the input was not double.
             if (cash >= 0) {
-                return balance += cash;
+                this.balance += cash;
                 // if its right so we add  it to balance.
             } else {
                 // If thar number is less than 0 it will be Exception that will be handled later
-                throw new IllegalAccessException();
+                throw new Exception();
             }
-        } catch (IllegalAccessException e) {
-            return 0;
+        } catch (Exception e) {
         }
     }
-    public double withdraw (double cash){
+    public void withdraw (double cash) {
         try {
             // In case the input was a String or other than double.
             if (cash >= 0) {
-                return balance -= cash;
+                this.balance -= cash;
                 // if its right so we add  it to balance.
             } else {
                 // If thar number is less than 0 it will be Exception that will be handled later
-                throw new IllegalAccessException();
+                throw new Exception();
             }
-        } catch (IllegalAccessException e) {
-            return 0;
+        } catch (Exception e) {
         }
     }
 }

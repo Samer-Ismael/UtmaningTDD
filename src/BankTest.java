@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import static java.lang.Double.parseDouble;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BankTest {
@@ -11,7 +12,7 @@ class BankTest {
     }
 
     @Test
-    void testConstructorMinus (){
+    void constructorShouldThrowExceptionForNegativeInitialCash (){
 
         //assertThrows can test Exception, and it will pass if it happens.
         //I had try catch in the method, so it will be not Exceptions, that's y I have it in comment.
@@ -23,38 +24,57 @@ class BankTest {
     }
 
     @Test
-    void depositAddPlus() {
+    void depositShouldAddPositiveAmountToBalance() {
         // Arrange
         double expected = 150;
         // Akt
-        double actual = sut.deposit(50);
+        sut.deposit(50.0);
         // Assert
-        assertEquals(expected,actual);
-    }
-
-    @Test
-    void depositAddMinus(){
-        assertEquals(0,sut.deposit(-50));
+        assertEquals(expected, sut.getBalance());
     }
     @Test
-    void depositAddZero() {
-        assertEquals(100,sut.deposit(0));
+    void depositNullInputShouldNotCrash() throws Exception {
+        // Arrange
+        Double cash = null;
+        // Act
+        double result = 0;
+        try {
+            sut.deposit(cash);
+        } catch (Exception e) {
+            // Exception occurred, set result to -1 as an indicator
+            result = -1;
+        }
+        // Assert
+        assertEquals(100, sut.getBalance());
+        assertEquals(-1, result);
     }
     @Test
-    void withdrawPlus() {
+    void depositShouldNotAddNegativeAmountToBalance(){
+        sut.deposit(-50);
+        assertEquals(100, sut.getBalance());
+    }
+    @Test
+    void depositShouldNotAddZeroAmountToBalance() {
+        sut.deposit(0);
+        assertEquals(100, sut.getBalance());
+    }
+    @Test
+    void withdrawShouldSubtractPositiveAmountFromBalance() {
         // Arrange
         double expected = 50;
         // Akt
-        double actual = sut.withdraw(50);
+        sut.withdraw(50);
         // Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, sut.getBalance());
     }
     @Test
-    void withdrawMinus(){
-        assertEquals(0,sut.withdraw(-50));
+    void withdrawShouldNotSubtractNegativeAmountFromBalance(){
+        sut.withdraw(-50);
+        assertEquals(100,sut.getBalance());
     }
     @Test
-    void withdrawZero() {
-        assertEquals(100, sut.withdraw(0));
+    void withdrawShouldNotSubtractZeroAmountFromBalance() {
+        sut.withdraw(0);
+        assertEquals(100,sut.getBalance());
     }
 }
