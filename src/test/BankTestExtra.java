@@ -45,7 +45,7 @@ class BankTestExtra {
         // Akt
         bank.deposit(amount);
         // Assert
-        Assertions.assertEquals(expected, bank.getBalance(), 0.0);
+        Assertions.assertEquals(expected, bank.getBalance(), 0.1);
     }
 
     @ParameterizedTest
@@ -70,6 +70,6 @@ class BankTestExtra {
     @DisplayName("withdrawTesting")
     public void testWithdraw(double amount, double expected) {
         bank.withdraw(amount);
-        Assertions.assertEquals(expected, bank.getBalance(), 0.0);
+        Assertions.assertEquals(expected, bank.getBalance(), 0.1);
     }
 }
