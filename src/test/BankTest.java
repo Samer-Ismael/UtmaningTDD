@@ -14,8 +14,8 @@ class BankTest {
     @Test
     void constructorShouldThrowExceptionForNegativeInitialCash (){
 
-        // I expect Exception and the other argument in the test should try to create object with minus initialCash
         //It takes the Exception class and a lambda that will run the method you want to test.
+        // It should throw Exception to pass the test
         assertThrows(Exception.class,
                 () -> {
             Bank test = new Bank(-1,1);
