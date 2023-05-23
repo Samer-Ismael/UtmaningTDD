@@ -32,9 +32,9 @@ public class Bank {
                 // if its right so we add  it to balance.
             } else {
                 // If thar number is less than 0 it will be Exception that will be handled later
-                throw new NullPointerException();
+                throw new Exception();
             }
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             //doNothing
         }
     }
@@ -46,9 +46,9 @@ public class Bank {
                 // if its right so we add  it to balance.
             } else {
                 // If thar number is less than 0 it will be Exception that will be handled later
-                throw new NullPointerException();
+                throw new Exception();
             }
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             // doNothing
         }
     }
