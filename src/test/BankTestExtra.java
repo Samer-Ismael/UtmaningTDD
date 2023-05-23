@@ -29,7 +29,10 @@ class BankTestExtra {
     // The name of the tests... to show it in consul
     @DisplayName("depositTesting")
     public void testDeposit(double amount, double expected) {
+        // Arrange is expected
+        // Akt
         bank.deposit(amount);
+        // Assert
         Assertions.assertEquals(expected, bank.getBalance(), 0.0);
     }
 
