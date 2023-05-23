@@ -21,9 +21,10 @@ class BankTestCheating {
     @CsvSource({
             // First number to run the deposit method
             // and second number is the Expected value
-            "50, 150",
-            "0, 100",
-            "-50, 100",
+            "50, 150", //deposit should increase balance
+            "0, 100", // deposit zero
+            "-50, 100", // deposit in minus should not change balance
+            // extra tests
             "150, 250",
             "1000, 1100",
             "-500, 100",
