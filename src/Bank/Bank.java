@@ -41,7 +41,7 @@ public class Bank {
     public void withdraw (double cash) {
         try {
             // In case the input was a String or other than double.
-            if (cash >= 0) {
+            if (cash >= 0 && cash <= balance) {
                 this.balance -= cash;
                 // if its right so we add  it to balance.
             } else {

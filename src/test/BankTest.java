@@ -5,16 +5,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BankTest {
-
     Bank sut = new Bank(100,1);
 
     BankTest() throws Exception {
-
     }
 
     @Test
     void constructorShouldThrowExceptionForNegativeInitialCash (){
 
+        // I expect Exception and the other argument in the test should try to create object with minus initialCash
         //It takes the Exception class and a lambda that will run the method you want to test.
         assertThrows(Exception.class,
                 () -> {
@@ -82,6 +81,11 @@ class BankTest {
     @Test
     void withdrawShouldNotSubtractZeroAmountFromBalance() {
         sut.withdraw(0);
+        Assertions.assertEquals(100,sut.getBalance());
+    }
+    @Test
+    void withdrawShouldNotSubtractAmountBiggerThanBalance() {
+        sut.withdraw(400);
         Assertions.assertEquals(100,sut.getBalance());
     }
 }
