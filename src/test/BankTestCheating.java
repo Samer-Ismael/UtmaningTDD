@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class BankTestExtra {
+class BankTestCheating {
 
     private Bank bank;
     @BeforeEach // To make this method run before each test method.
