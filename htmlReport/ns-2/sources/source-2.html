@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > BankTestCheating</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">test</a>
+</div>
+
+<h1>Coverage Summary for Class: BankTestCheating (test)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BankTestCheating</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package test;
+&nbsp;import Bank.Bank;
+&nbsp;import org.junit.jupiter.api.Assertions;
+&nbsp;import org.junit.jupiter.api.BeforeEach;
+&nbsp;import org.junit.jupiter.api.DisplayName;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;import org.junit.jupiter.params.ParameterizedTest;
+&nbsp;import org.junit.jupiter.params.provider.CsvSource;
+&nbsp;
+<b class="fc">&nbsp;class BankTestCheating {</b>
+&nbsp;
+&nbsp;    private Bank bank;
+&nbsp;    @BeforeEach // To make this method run before each test method.
+&nbsp;    public void setup() throws Exception {
+<b class="fc">&nbsp;        double initialCash = 100.0;</b>
+<b class="fc">&nbsp;        int accountNumber = 1;</b>
+&nbsp;
+<b class="fc">&nbsp;        bank = new Bank(initialCash, accountNumber);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ParameterizedTest// To tell that the method will run more than one time with different values.
+&nbsp;    @CsvSource({
+&nbsp;            // First number to run the deposit method
+&nbsp;            // and second number is the Expected value
+&nbsp;            &quot;50, 150&quot;, //deposit should increase balance
+&nbsp;            &quot;0, 100&quot;, // deposit zero
+&nbsp;            &quot;-50, 100&quot;, // deposit in minus should not change balance
+&nbsp;            // extra tests
+&nbsp;            &quot;150, 250&quot;,
+&nbsp;            &quot;1000, 1100&quot;,
+&nbsp;            &quot;-500, 100&quot;,
+&nbsp;            &quot;0.5, 100.5&quot;,
+&nbsp;            &quot;0.0, 100.0&quot;,
+&nbsp;            &quot;-25, 100&quot;,
+&nbsp;            &quot;75, 175&quot;,
+&nbsp;            &quot;200, 300&quot;,
+&nbsp;            &quot;50.5, 150.5&quot;,
+&nbsp;            &quot;0.1, 100.1&quot;,
+&nbsp;            &quot;0.9, 100.9&quot;,
+&nbsp;            &quot;-100, 100&quot;,
+&nbsp;            &quot;99.99, 199.99&quot;
+&nbsp;    })
+&nbsp;    // The name of the tests... to show it in consul
+&nbsp;    @DisplayName(&quot;depositTesting&quot;)
+&nbsp;    public void testDeposit(double amount, double expected) {
+&nbsp;        // Arrange is expected
+&nbsp;        // Akt
+<b class="fc">&nbsp;        bank.deposit(amount);</b>
+&nbsp;        // Assert
+<b class="fc">&nbsp;        Assertions.assertEquals(expected, bank.getBalance(), 0.1);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @ParameterizedTest
+&nbsp;    @CsvSource({
+&nbsp;            &quot;50, 50&quot;,
+&nbsp;            &quot;0, 100&quot;,
+&nbsp;            &quot;150, 100&quot;,
+&nbsp;            &quot;400, 100&quot;,
+&nbsp;            &quot;75, 25&quot;,
+&nbsp;            &quot;25, 75&quot;,
+&nbsp;            &quot;100, 0&quot;,
+&nbsp;            &quot;99, 1&quot;,
+&nbsp;            &quot;101, 100&quot;,
+&nbsp;            &quot;50.5, 49.5&quot;,
+&nbsp;            &quot;49.5, 50.5&quot;,
+&nbsp;            &quot;0.5, 99.5&quot;,
+&nbsp;            &quot;0.1, 99.9&quot;,
+&nbsp;            &quot;0.9, 99.1&quot;,
+&nbsp;            &quot;100.5, 100&quot;,
+&nbsp;            &quot;0.0, 100.0&quot;
+&nbsp;    })
+&nbsp;    @DisplayName(&quot;withdrawTesting&quot;)
+&nbsp;    public void testWithdraw(double amount, double expected) {
+<b class="fc">&nbsp;        bank.withdraw(amount);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expected, bank.getBalance(), 0.1);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-24 10:33</div>
+</div>
+</body>
+</html>
